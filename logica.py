@@ -3,6 +3,7 @@ import nltk
 from nltk import word_tokenize
 
 #Obtendo alguns requisitos do nltk
+nltk.download('rslp')
 nltk.download('stopwords')
 nltk.download('punkt')
 stopwords_pt = nltk.corpus.stopwords.words('portuguese')

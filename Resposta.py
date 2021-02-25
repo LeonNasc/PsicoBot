@@ -1,4 +1,5 @@
 from logica import *
+from nltk.stem import RSLPStemmer as stemmer
 
 class Resposta:
 
@@ -23,16 +24,13 @@ class Resposta:
         estrutura_regra = [x[-1] for x in self.Regra] 
 
         estrutura = self.AvaliarEstrutura(estrutura_regra, estrutura)
-        conteudo = True
+        conteudo = self.AvaliarConteudo(conteudo_regra, conteudo)
+        print(estrutura)
 
-        return estrutura and conteudo
+        return (estrutura and conteudo)
 
     def AvaliarEstrutura(self,regras,mensagem):
         # Se a estrutura não for a da regra, a regra não se encaixa
-
-        print(mensagem)
-        print(regras)
-
         for regra in regras:
             if regra not in mensagem:
                 return False
@@ -42,12 +40,37 @@ class Resposta:
 
 
         # Verifica se a ordem sintática está igual
-        for i in range(regras):
-            if regra[i] != est_mensagem[i]:
+        for i in range(len(regras)):
+            print(regras[i], est_mensagem[i])
+            if regras[i] != est_mensagem[i]:
                 return False
 
         #Se chegou até aqui, a estrutura é igual
         return True
+    
+    def AvaliarConteudo(self, regras, mensagem):
+        stem = stemmer()
+
+        mensagem_f = [stem.stem(msg) for msg in Resposta.__flatten_tupla(mensagem)]
+
+        print(regras)
+        print(mensagem)
+
+        regras_validas = [regra for regra in regras if regra[0] != "*"] #Removo as regras wildcard
+
+        palavras = []
+        for regra in regras_validas:
+            for palavra in regra:
+                p = stem.stem(palavra)
+                if p in mensagem_f:
+                    print(regra, mensagem)
+                    palavras.append(regra)
+                    break #A regra já foi atendida
+
+        return len(palavras) == len(regras_validas)
+
+    def __flatten_tupla(l):
+        return list(sum(l,()))
 
     '''
         Função Estática para instanciar as respostas do arquivo

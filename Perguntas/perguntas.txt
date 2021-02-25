@@ -6,7 +6,7 @@ R2	PESSOA_NEUTRO	P2
 [('Tudo','ADV'), ('Bem', 'Bom', 'OK', 'ADJ')]
 False
 R3	PESSOA_ANSIOSA	P3
-[('*','PRON'), ('Ansioso', 'Nervoso', 'Preocupado', 'ADJ')]
+[('*','V'), ('Ansioso','Ansiosa', 'Nervoso', 'Nervosa', 'Preocupado','Preocupada' ,'ADJ')]
 ('Ansiedade', True)
 P2	Que ótimo! Então como posso ajudá-lo?	3
 R4	PESSOA_IRRITADA	P3
@@ -23,13 +23,13 @@ R7	TEMPO_PESSOA_SINTOMA_3_dias	P4
 [('Há', 'V'), ('3', 'NUM'), ('dias', 'N')]
 ('Sintoma_3_dias', True)
 R8	TEMPO_PESSOA_SINTOMA_1_mes	P4
-[('Há', 'V'), ('por', 'PREP'), ('a', 'ART'), ('1', 'NUM'), ('mes', 'N')]
+[('Há', 'V'), ('*', 'NUM'), ('mes', 'N')]
 ('Sintoma_1_mes', True)
 R9	TEMPO_PESSSOA_SINTOMA_6_meses	P4
-[('Há', 'V'), ('mais', 'ADV'), ('6', 'NUM'), ('mes', 'N')]
+[('Há', 'V'), ('mais', 'ADV'), ('*', 'NUM'), ('mes', 'N')]
 ('Sintoma_6_meses', True)
 R8	TEMPO_PESSOA_SINTOMA_1_mes	P4
-[('Há', 'V'), ('por', 'PREP'), ('a', 'ART'), ('1', 'NUM'), ('mês', 'N')]
+[('Há', 'V'), ('cerca', 'N'), ('de', 'PREP'), ('*', 'NUM'), ('mês', 'N')]
 ('Sintoma_1_mes', True)
 R9	TEMPO_PESSOA_NEGACAO	P4
 [('Não', 'ADV'), ('sei', 'V')]
