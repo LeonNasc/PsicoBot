@@ -1,0 +1,19 @@
+P1	Bom dia! Eu sou o psicobot, um robõ que te ajuda a entender sobre a sua ansiedade! Como você está se sentindo hoje?	3
+R1	PESSOA_BEM	P2
+[("*", "PRON"), ("Sentir/Estar",'V'), ("Feliz/Bem/OK", "ADJ")]
+False
+R2	PESSOA_NEUTRO	P2
+[("Tudo","ADV"), ("Bem/Bom/OK", "ADJ")]
+False
+R3	PESSOA_ANSIOSA	P3
+[("*","PRON"), ("Ansioso/Nervoso/Preocupado", "ADJ")]
+('Ansiedade', True)
+P2	Que ótimo! Então como posso ajudá-lo?	1
+R4	ENCERRAR_1	P4
+[("Vamos","V"), ("!", "!")]
+False
+P3	Entendi... Desde quando você se sente assim?	1
+R5	ENCERRAR_2	P4
+[("Tchau","N"), ("!", "!")]
+False
+P4	Acabou!	0
